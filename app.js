@@ -1,7 +1,9 @@
 const express = require('express');
+const partials = require('express-partials');
 const app = express();
 
 app.set('view engine', 'ejs');
+app.use(partials());
 
 app.get('/', (req, res) => {
     res.render('landing');
