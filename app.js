@@ -41,7 +41,7 @@ app.get('/campgrounds', (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render('campgrounds', {campgrounds});
+            res.render('index', {campgrounds});
         }
     });
 });
@@ -55,13 +55,17 @@ app.post('/campgrounds', (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.redirect('/campgrounds');
+            res.redirect('/index');
         }
     });
 });
 
 app.get('/campgrounds/new', (req, res) => {
     res.render('new');
+});
+
+app.get('/campgrounds/:id', (req, res) => {
+    res.render('show');
 });
 
 app.listen(3000, () => {
