@@ -1,7 +1,10 @@
-const express = require('express');
-const partials = require('express-partials');
-const bodyParser = require('body-parser');
-const app = express();
+const express    = require('express'),
+      partials   = require('express-partials'),
+      bodyParser = require('body-parser'),
+      app        = express(),
+      mongoose   = require('mongoose');
+
+mongoose.connect(`mongodb://SarahGamal:s147852369@ds143293.mlab.com:43293/yelpcampground`);
 
 app.set('view engine', 'ejs');
 app.use(partials());
