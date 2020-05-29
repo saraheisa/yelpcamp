@@ -1,14 +1,23 @@
 <%- include ('partials/header') %>
 <%- include ('partials/navbar') %>
 
-<h1>Create a new CampGround</h1>
+<div class="container"> 
+    <h1 class="text-center">Create a new CampGround</h1>
 
-<form action="/campgrounds" method="POST">
-    <input type="text" name="name" placeholder="name">
-    <input type="text" name="image" placeholder="image URL">
-    <input type="submit" value="submit">
-</form>
-
-<a href="/campgrounds">GO BACK!</a>
+    <div style="width: 30%; margin: 25px auto;">
+        <form action="/campgrounds" method="POST">
+            <div class="form-group">
+                <input class="form-control" type="text" name="name" placeholder="name">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="image" placeholder="image URL">
+            </div>
+            <div class="form-group">
+                <input class="btn btn-lg btn-primary btn-block" type="submit" value="submit">
+            </div>
+        </form>
+        <a href="/campgrounds">GO BACK!</a>
+    </div>
+</div>
 
 <%- include ('partials/footer') %>
