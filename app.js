@@ -2,22 +2,14 @@ const express    = require('express'),
       partials   = require('express-partials'),
       bodyParser = require('body-parser'),
       app        = express(),
-      mongoose   = require('mongoose');
+      mongoose   = require('mongoose'),
+      Campground = require('./models/campground');
 
 mongoose.connect(`mongodb://SarahGamal:s147852369@ds143293.mlab.com:43293/yelpcampground`);
 
 app.set('view engine', 'ejs');
 app.use(partials());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// schema setup
-const campgroundSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
-});
-
-const Campground = mongoose.model('campground', campgroundSchema);
 
 // Campground.create({
 //         name: 'wadi al hytan', 
