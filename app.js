@@ -3,9 +3,12 @@ const express    = require('express'),
       bodyParser = require('body-parser'),
       app        = express(),
       mongoose   = require('mongoose'),
-      Campground = require('./models/campground');
+      Campground = require('./models/campground'),
+      seedDb     = require('./seed');
 
 mongoose.connect(`mongodb://SarahGamal:s147852369@ds143293.mlab.com:43293/yelpcampground`);
+
+seedDb();
 
 app.set('view engine', 'ejs');
 app.use(partials());
