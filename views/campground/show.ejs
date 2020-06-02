@@ -1,5 +1,5 @@
-<%- include ('partials/header') %>
-<%- include ('partials/navbar') %>
+<%- include ('../partials/header') %>
+<%- include ('../partials/navbar') %>
 
 <h1><%= campground.name%></h1>
 <img src="<%= campground.image%>" alt="<%= campground.name%> image">
@@ -9,4 +9,4 @@
     <strong><%= comment.author%></strong> - <%= comment.text%>
 <% });%>
 
-<%- include ('partials/footer') %>
+<%- include ('../partials/footer') %>
