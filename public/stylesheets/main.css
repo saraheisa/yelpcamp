@@ -5,3 +5,29 @@
 .img-thumbnail img {
     width: 100%;
 }
+
+.img-thumbnail .figure-caption {
+    padding: 0.5em;
+}
+
+.card {
+    max-width: 300px;
+}
+
+.vote {
+    color: #dc3545;
+}
+
+.date {
+    font-size: 0.6em;
+}
+
+.campgrounds-container {
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+.form-container {
+    width: 30%; 
+    margin: 25px auto;
+}

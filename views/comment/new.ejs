@@ -4,7 +4,7 @@
 <div class="container"> 
     <h1 class="text-center">Create a new Comment for <%= campground.name%></h1>
 
-    <div style="width: 30%; margin: 25px auto;">
+    <div class="form-container">
         <form action="/campgrounds/<%= campground._id%>/comments" method="POST">
             <div class="form-group">
                 <input class="form-control" type="text" name="comment[author]" placeholder="author">

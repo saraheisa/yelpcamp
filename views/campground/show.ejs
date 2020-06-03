@@ -14,7 +14,7 @@
         <div class="col-md-9">
             <div class="img-thumbnail">
                 <img class="img-fluid" src="<%= campground.image%>" alt="<%= campground.name%> image">
-                <div class="figure-caption" style="padding: 0.5em;">
+                <div class="figure-caption">
                     <h4 class="float-right text-monospace">9.00$/night</h4>
                     <h4 class="text-uppercase text-monospace"><a href="#"><%= campground.name%></a></h4>
                     <p class="text-capitalize"><%= campground.description%></p>
@@ -27,13 +27,13 @@
                 <hr>
                 <div class="d-inline-flex p-2 flex-row flex-wrap">
                     <% campground.comments.forEach((comment) => {%>
-                        <div class="card m-3" style="max-width: 300px;">
+                        <div class="card m-3">
                             <div class="card-body">
                                 <div class="float-right">
-                                    <div style="color: #dc3545;">
+                                    <div class="vote">
                                         ♥♥♥♥♥
                                     </div>
-                                    <span class="font-weight-lighter text-muted align-middle" style="font-size: 0.6em;">
+                                    <span class="font-weight-lighter text-muted align-middle date">
                                         10 days ago
                                     </span>
                                 </div>
