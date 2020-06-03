@@ -1,18 +1,51 @@
 <%- include ('../partials/header') %>
 <%- include ('../partials/navbar') %>
 
-<h1><%= campground.name%></h1>
-<img src="<%= campground.image%>" alt="<%= campground.name%> image">
-<p><%= campground.description%></p>
-
-<p>
-    <a href="/campgrounds/<%= campground._id%>/comments/new" class="btn btn-success">Comment</a>
-</p>
-
-<% campground.comments.forEach((comment) => {%>
-    <p>
-        <strong><%= comment.author%></strong> - <%= comment.text%>
-    </p>
-<% });%>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">YelpCamp</p>
+            <div class="list-group">
+                <li class="list-group-item active">info 1</li>
+                <li class="list-group-item">info 2</li>
+                <li class="list-group-item">info 3</li>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="img-thumbnail" style="padding: 0;">
+                <img class="img-fluid" style="width: 100%;" src="<%= campground.image%>" alt="<%= campground.name%> image">
+                <div class="figure-caption" style="padding: 0.5em;">
+                    <h4 class="float-right text-monospace">9.00$/night</h4>
+                    <h4 class="text-uppercase text-monospace"><a href="#"><%= campground.name%></a></h4>
+                    <p class="text-capitalize"><%= campground.description%></p>
+                </div>
+            </div>
+            <div class="m-3 bg-light">
+                <div class="float-right m-3">
+                    <a href="/campgrounds/<%= campground._id%>/comments/new" class="btn btn-success">Add New Comment</a>
+                </div>
+                <hr>
+                <div class="d-inline-flex p-2 flex-row flex-wrap">
+                    <% campground.comments.forEach((comment) => {%>
+                        <div class="card m-3" style="max-width: 300px;">
+                            <div class="card-body">
+                                <div class="float-right">
+                                    <div style="color: #dc3545;">
+                                        ♥♥♥♥♥
+                                    </div>
+                                    <span class="font-weight-lighter text-muted align-middle" style="font-size: 0.6em;">
+                                        10 days ago
+                                    </span>
+                                </div>
+                                <h5 class="card-title"><%= comment.author%></h5>
+                                <p class="card-text"><%= comment.text%></p>
+                            </div>
+                        </div>
+                    <% });%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <%- include ('../partials/footer') %>
