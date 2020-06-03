@@ -14,6 +14,7 @@ seedDb();
 app.set('view engine', 'ejs');
 app.use(partials());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/public'));
 
 // Campground.create({
 //         name: 'wadi al hytan', 
