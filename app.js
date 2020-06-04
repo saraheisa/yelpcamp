@@ -145,7 +145,7 @@ app.post('/login', passport.authenticate('local',
     (req, res) => { }
 );
 
-app.post('/logout', (req, res) => {
+app.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/campgrounds');
 });
