@@ -145,6 +145,11 @@ app.post('/login', passport.authenticate('local',
     (req, res) => { }
 );
 
+app.post('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/campgrounds');
+});
+
 app.listen(3000, () => {
     console.log('Server started on 3000');
 });
