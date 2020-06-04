@@ -1,10 +1,13 @@
 const express    = require('express'),
       partials   = require('express-partials'),
       bodyParser = require('body-parser'),
+      passport   = require('passport'),
+      passportLocal    = require('passport-local'),
       app        = express(),
       mongoose   = require('mongoose'),
       Campground = require('./models/campground'),
       Comment    = require('./models/comment'),
+      User       = require('./models/user'),
       seedDb     = require('./seed');
 
 mongoose.connect(`mongodb://SarahGamal:s147852369@ds143293.mlab.com:43293/yelpcampground`);
@@ -15,6 +18,18 @@ app.set('view engine', 'ejs');
 app.use(partials());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
+
+// Passport Configuration
+app.use(require('express-session')({
+    secret: 'pizza over pasta',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new passportLocal(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // Campground.create({
 //         name: 'wadi al hytan', 
