@@ -116,6 +116,23 @@ app.post('/campgrounds/:id/comments', (req, res) => {
     });
 });
 
+app.get('/register', (req, res) => {
+    res.render('register');
+});
+
+app.post('/register', (req, res) => {
+    User.register(new User({ username: req.body.username }),
+    req.body.password, (err, user) => {
+        if (err) {
+            console.log(err);
+            return res.render('register');
+        }
+        passport.authenticate('local')(req, res, function(){
+            res.redirect('/campgrounds');
+        });
+    });
+});
+
 app.listen(3000, () => {
     console.log('Server started on 3000');
 });
