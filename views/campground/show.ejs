@@ -50,6 +50,10 @@
                                     class="btn btn-warning text-muted btn-sm">
                                     EDIT
                                 </a>
+                                <form action="/campgrounds/<%= campground._id%>/comments/<%= comment._id%>?_method=DELETE" 
+                                    method="POST" class="d-inline">
+                                    <input class="btn btn-danger btn-sm" type="submit" value="Delete">
+                                </form>
                             </div>
                         </div>
                     <% });%>
