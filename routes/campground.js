@@ -43,7 +43,6 @@ router.get('/:id', (req, res) => {
                     if (err) {
                         console.log(err);
                     } else {
-                        console.log(campground);
                         res.render('campground/show', { campground });
                     }
                 });
