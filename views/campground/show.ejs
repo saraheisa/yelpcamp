@@ -36,7 +36,7 @@
                     <% campground.comments.forEach((comment) => {%>
                         <div class="card m-3">
                             <div class="card-body">
-                                <div class="float-right">
+                                <div class="float-right ml-2">
                                     <div class="vote">
                                         ♥♥♥♥♥
                                     </div>
@@ -44,7 +44,7 @@
                                         10 days ago
                                     </span>
                                 </div>
-                                <h5 class="card-title"><%= comment.author.username%></h5>
+                                <h5 class="card-title overflow-hidden"><%= comment.author.username%></h5>
                                 <p class="card-text"><%= comment.text%></p>
                                 <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
                                     <a href="/campgrounds/<%= campground._id%>/comments/<%= comment._id%>/edit" 
