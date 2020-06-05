@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
     Campground.find((err, campgrounds) => {
         if (err) {
             console.log(err);
+            req.flash('error', 'Something Went Wrong!');
         } else {
             res.render('campground/index', {campgrounds});
         }
@@ -27,7 +28,9 @@ router.post('/', middlewares.isLoggedIn, (req, res) => {
     Campground.create(newCampground, (err, campground) => {
         if (err) {
             console.log(err);
+            req.flash('error', err.message);
         } else {
+            req.flash('success', 'Successfully created a campground');
             res.redirect('/campgrounds');
         }
     });
@@ -43,6 +46,7 @@ router.get('/:id', (req, res) => {
               .exec((err, campground) => {
                     if (err) {
                         console.log(err);
+                        req.flash('error', '404 Campground doesn\'t exist!');
                     } else {
                         res.render('campground/show', { campground });
                     }
@@ -51,7 +55,12 @@ router.get('/:id', (req, res) => {
 
 router.get('/:id/edit', middlewares.isAuthorizedCampground, (req, res) => {
     Campground.findById(req.params.id, (err, campground) => {
-        res.render('campground/edit', { campground });
+        if (err) {
+            console.log(err);
+            req.flash('error', 'Something Went Wrong!');
+        } else {
+            res.render('campground/edit', { campground });
+        }
     });
 });
 
@@ -59,7 +68,9 @@ router.put('/:id', middlewares.isAuthorizedCampground, (req, res) => {
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedCampground) => {
         if (err) {
             console.log(err);
+            req.flash('error', 'Something Went Wrong!');
         } else {
+            req.flash('success', 'Successfully updated ' + updatedCampground.name);
             res.redirect('/campgrounds/' + req.params.id);
         }
     });
@@ -69,7 +80,9 @@ router.delete('/:id', middlewares.isAuthorizedCampground, (req, res) => {
     Campground.findByIdAndRemove(req.params.id, (err) => {
         if (err) {
             console.log(err);
+            req.flash('error', 'Something Went Wrong!');
         } else {
+            req.flash('success', 'Successfully deleted!');
             res.redirect('/campgrounds');
         }
     });
