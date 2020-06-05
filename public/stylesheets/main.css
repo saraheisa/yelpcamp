@@ -27,3 +27,8 @@
     width: 30%; 
     margin: 25px auto;
 }
+
+.campground-card {
+    align-self: center;
+    min-width: 230px;
+}
