@@ -42,6 +42,11 @@ app.use(flash());
 // pass the current user to every request
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.success = req.flash('success');
+    res.locals.info = req.flash('info');
+    res.locals.warning = req.flash('warning');
+    res.locals.error = req.flash('error');
+    res.locals.dark = req.flash('dark');
     next();
 });
 

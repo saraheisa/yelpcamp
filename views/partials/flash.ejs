@@ -1,0 +1,23 @@
+<div class="container">
+    <% if (success && success.length > 0) { %>
+        <div class="alert alert-success" role="alert">
+        <%= success %>
+        </div>
+    <% } else if (error && error.length > 0) { %>
+        <div class="alert alert-danger" role="alert">
+        <%= error %>
+        </div>
+    <% } else if (warning && warning.length > 0) { %>
+        <div class="alert alert-warning" role="alert">
+        <%= warning %>
+        </div>
+    <% } else if (info && info.length > 0) { %>
+        <div class="alert alert-info" role="alert">
+        <%= info %>
+        </div>
+    <% } else if (dark && dark.length > 0) { %>
+        <div class="alert alert-dark" role="alert">
+        <%= dark %>
+        </div>
+    <% } %>
+</div>
