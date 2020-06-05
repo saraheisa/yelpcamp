@@ -5,6 +5,7 @@ const express          = require('express'),
       passportLocal    = require('passport-local'),
       app              = express(),
       mongoose         = require('mongoose'),
+      methodOverride   = require('method-override'),
       User             = require('./models/user'),
       seedDb           = require('./seed');
 
@@ -32,6 +33,8 @@ app.use(passport.session());
 passport.use(new passportLocal(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+app.use(methodOverride('_method'));
 
 // pass the current user to every request
 app.use(function(req, res, next){
