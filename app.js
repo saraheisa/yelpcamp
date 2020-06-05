@@ -3,6 +3,7 @@ const express          = require('express'),
       bodyParser       = require('body-parser'),
       passport         = require('passport'),
       passportLocal    = require('passport-local'),
+      flash            = require('connect-flash'),
       app              = express(),
       mongoose         = require('mongoose'),
       methodOverride   = require('method-override'),
@@ -35,6 +36,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(methodOverride('_method'));
+
+app.use(flash());
 
 // pass the current user to every request
 app.use(function(req, res, next){
