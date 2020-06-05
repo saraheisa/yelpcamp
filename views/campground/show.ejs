@@ -46,6 +46,10 @@
                                 </div>
                                 <h5 class="card-title"><%= comment.author.username%></h5>
                                 <p class="card-text"><%= comment.text%></p>
+                                <a href="/campgrounds/<%= campground._id%>/comments/<%= comment._id%>/edit" 
+                                    class="btn btn-warning text-muted btn-sm">
+                                    EDIT
+                                </a>
                             </div>
                         </div>
                     <% });%>
