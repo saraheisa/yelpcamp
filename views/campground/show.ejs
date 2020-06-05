@@ -46,14 +46,16 @@
                                 </div>
                                 <h5 class="card-title"><%= comment.author.username%></h5>
                                 <p class="card-text"><%= comment.text%></p>
-                                <a href="/campgrounds/<%= campground._id%>/comments/<%= comment._id%>/edit" 
-                                    class="btn btn-warning text-muted btn-sm">
-                                    EDIT
-                                </a>
-                                <form action="/campgrounds/<%= campground._id%>/comments/<%= comment._id%>?_method=DELETE" 
-                                    method="POST" class="d-inline">
-                                    <input class="btn btn-danger btn-sm" type="submit" value="Delete">
-                                </form>
+                                <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+                                    <a href="/campgrounds/<%= campground._id%>/comments/<%= comment._id%>/edit" 
+                                        class="btn btn-warning text-muted btn-sm">
+                                        EDIT
+                                    </a>
+                                    <form action="/campgrounds/<%= campground._id%>/comments/<%= comment._id%>?_method=DELETE" 
+                                        method="POST" class="d-inline">
+                                        <input class="btn btn-danger btn-sm" type="submit" value="Delete">
+                                    </form>
+                                <% } %>
                             </div>
                         </div>
                     <% });%>
