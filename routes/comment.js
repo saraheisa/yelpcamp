@@ -31,7 +31,7 @@ router.post('/', isLoggedIn, (req, res) => {
     });
 });
 
-router.get('/:comment_id/edit', (req, res) => {
+router.get('/:comment_id/edit', isAuthorized, (req, res) => {
     Campground.findById(req.params.id, (err, campground) => {
         if (err) {
             console.log(err);
@@ -47,7 +47,7 @@ router.get('/:comment_id/edit', (req, res) => {
     });
 });
 
-router.put('/:comment_id', (req, res) => {
+router.put('/:comment_id', isAuthorized, (req, res) => {
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, (err, comment) => {
         if (err) {
             console.log(err);
@@ -57,7 +57,7 @@ router.put('/:comment_id', (req, res) => {
     });
 });
 
-router.delete('/:comment_id', (req, res) => {
+router.delete('/:comment_id', isAuthorized, (req, res) => {
     Comment.findByIdAndRemove(req.params.comment_id, (err) => {
         if (err) {
             console.log(err);
@@ -73,6 +73,19 @@ function isLoggedIn(req, res, next) {
         return next();
     }
     res.redirect('/login');
+}
+
+function isAuthorized(req, res, next) {
+    if (req.isAuthenticated()) {
+        Comment.findById(req.params.comment_id, (err, comment) => {
+            if (comment.author.id.equals(req.user._id)) {
+                return next();
+            }
+            res.redirect('back');
+        });
+    } else {
+        res.redirect('back');
+    }
 }
 
 module.exports = router;
