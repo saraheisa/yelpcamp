@@ -19,10 +19,12 @@
                     <h4 class="text-uppercase text-monospace"><a href="#"><%= campground.name%></a></h4>
                     <p class="text-capitalize"><%= campground.description%></p>
                     <p><em>Submitted by <%= campground.author.username %></em></p>
-                    <a href="/campgrounds/<%= campground._id%>/edit" class="btn btn-warning text-muted btn-sm">EDIT</a>
-                    <form action="/campgrounds/<%= campground._id%>?_method=DELETE" method="POST" class="d-inline">
-                        <input class="btn btn-danger btn-sm" type="submit" value="Delete">
-                    </form>
+                    <% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
+                        <a href="/campgrounds/<%= campground._id%>/edit" class="btn btn-warning text-muted btn-sm">EDIT</a>
+                        <form action="/campgrounds/<%= campground._id%>?_method=DELETE" method="POST" class="d-inline">
+                            <input class="btn btn-danger btn-sm" type="submit" value="Delete">
+                        </form>
+                    <% } %>
                 </div>
             </div>
             <div class="m-3 bg-light">
