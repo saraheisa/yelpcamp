@@ -19,6 +19,7 @@
                     <h4 class="text-uppercase text-monospace"><a href="#"><%= campground.name%></a></h4>
                     <p class="text-capitalize"><%= campground.description%></p>
                     <p><em>Submitted by <%= campground.author.username %></em></p>
+                    <a href="/campgrounds/<%= campground._id%>/edit" class="btn btn-warning text-muted">EDIT</a>
                 </div>
             </div>
             <div class="m-3 bg-light">
