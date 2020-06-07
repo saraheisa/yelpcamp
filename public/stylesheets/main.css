@@ -8,6 +8,7 @@
 
 .card {
     max-width: 300px;
+    height: fit-content;
 }
 
 .vote {
