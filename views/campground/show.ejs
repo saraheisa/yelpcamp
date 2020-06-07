@@ -38,8 +38,13 @@
                         <div class="card m-3">
                             <div class="card-body">
                                 <div class="float-right ml-2">
-                                    <div class="vote">
-                                        ♥♥♥♥♥
+                                    <div class="">
+                                        <% for(let i = comment.vote; i > 0; i--) { %>
+                                            <span class="heart vote" value="1">♥</span>
+                                        <% } %>
+                                        <% for(let i = 5 - comment.vote; i > 0; i--) { %>
+                                            <span class="heart" value="1">♥</span>
+                                        <% } %>
                                     </div>
                                     <span class="font-weight-lighter text-muted align-middle date">
                                         10 days ago
