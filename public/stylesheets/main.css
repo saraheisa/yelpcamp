@@ -42,3 +42,7 @@
     color: #a8a5a59c;
     cursor: pointer;
 }
+
+.comments-bg {
+    min-height: 70px;
+}
