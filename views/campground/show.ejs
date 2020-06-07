@@ -47,7 +47,8 @@
                                         <% } %>
                                     </div>
                                     <span class="font-weight-lighter text-muted align-middle date">
-                                        10 days ago
+                                        <% var date = new Date(comment.created); %>
+                                        <%= date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()%>
                                     </span>
                                 </div>
                                 <h5 class="card-title overflow-hidden"><%= comment.author.username%></h5>
