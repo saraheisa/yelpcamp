@@ -11,7 +11,7 @@
 }
 
 .vote {
-    color: #dc3545;
+    color: #dc3545 !important;
 }
 
 .date {
@@ -31,4 +31,14 @@
 .campground-card {
     align-self: center;
     min-width: 230px;
+}
+
+.voting-form {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.heart {
+    color: #a8a5a59c;
+    cursor: pointer;
 }
