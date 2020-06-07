@@ -8,15 +8,16 @@ const express          = require('express'),
       mongoose         = require('mongoose'),
       methodOverride   = require('method-override'),
       User             = require('./models/user'),
-      seedDb           = require('./seed');
 
 const commentRouter    = require('./routes/comment'),
       campgroundRouter = require('./routes/campground'),
       indexRouter      = require('./routes/index');
 
-mongoose.connect(`mongodb://SarahGamal:s147852369@ds143293.mlab.com:43293/yelpcampground`);
-
-seedDb();
+mongoose.connect(`mongodb://127.0.0.1:27017/yelpcampground`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+});
 
 app.set('view engine', 'ejs');
 app.use(partials());
